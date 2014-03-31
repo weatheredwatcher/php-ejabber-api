@@ -12,6 +12,7 @@
  * @global string JABBER_SERVER defines that jabber sever domain name
  * @global string JABBER_USERNAME defines the admin username if needed
  * @global string JABBER_PASSWORD defines the global password to be used by all users
+ * @global string JABBER_PATH defines the path to the ejabberdtl command
  *
  */
 
@@ -20,6 +21,7 @@ namespace ejabber;
 define('JABBER_SERVER','localhost.localdomain');
 define('JABBER_USERNAME','admin');
 define('JABBER_PASSWORD','password');
+define('JABBER_PATH', '/opt/ejabberd-13.12/bin/ejabberdctl');
 
 class ejabber {
 
@@ -38,7 +40,7 @@ class ejabber {
 */
   static function createUser($username, $password="password"){
 
-    $return = exec("sudo /opt/ejabberd-13.12/bin/ejabberdctl register $username " . JABBER_SERVER . " " . $password);
+    $return = exec("sudo ". JABBER_PATH . " register $username " . JABBER_SERVER . " " . $password);
     
     return $return;
   }
@@ -58,7 +60,7 @@ class ejabber {
   static function getUsers(){
 
      //get users on the server
-     exec("sudo /opt/ejabberd-13.12/bin/ejabberdctl registered-users localhost.localdomain", $users);
+     exec("sudo ". JABBER_PATH . " registered-users localhost.localdomain", $users);
      return $users;
 
   }
@@ -79,7 +81,7 @@ class ejabber {
   static function deleteUser($username){
 
     //delete user from the server
-    exec("sudo /opt/ejabberd-13.12/bin/ejabberdctl unregister $username localhost.localdomain", $users);
+    exec("sudo ". JABBER_PATH . " unregister $username localhost.localdomain", $users);
   }
   
 /**
@@ -97,7 +99,7 @@ class ejabber {
 
   static function connectedUsers(){
   
-    exec("sudo /opt/ejabberd-13.12/bin/ejabberdctl connected-users", $sessions);
+    exec("sudo ". JABBER_PATH . " connected-users", $sessions);
     
     return $sessions;
   
