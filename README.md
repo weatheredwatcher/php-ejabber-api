@@ -17,6 +17,7 @@ Set the globals
 JABBER_SERVER this is the server address and is used for creating users i.e. localhost.localdomain, <user@localhost.localdomain>
 JABBER_USER this is the admin user, default admin
 JABBER_PASSWORD this is the admin password
+JABBER_PATH path the jabberdctrl binary
 
 Methods:
 
