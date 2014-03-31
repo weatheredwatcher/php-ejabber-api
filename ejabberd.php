@@ -36,9 +36,9 @@ class ejabber {
  *
  * 
 */
-  static function createUser($username){
+  static function createUser($username, $password="password"){
 
-    $return = exec("sudo /opt/ejabberd-13.12/bin/ejabberdctl register $username " . JABBER_SERVER . " " . JABBER_PASSWORD);
+    $return = exec("sudo /opt/ejabberd-13.12/bin/ejabberdctl register $username " . JABBER_SERVER . " " . $password);
     
     return $return;
   }
