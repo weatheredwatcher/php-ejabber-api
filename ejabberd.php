@@ -32,7 +32,7 @@ class ejabber {
  *
  * @param string $username 
  * @param string $password
- * @return array $users
+ * @return string $users
  *
  * 
 */
@@ -43,6 +43,18 @@ class ejabber {
     return $return;
   }
 
+
+/**
+ * getUser
+ *
+ * Lists the current registered users.
+ *
+ * @api
+ *
+ * @return array $users
+ *
+ * 
+*/
   static function getUsers(){
 
      //get users on the server
@@ -50,12 +62,38 @@ class ejabber {
      return $users;
 
   }
+  
+/**
+ * deleteUser
+ *
+ * deletes the user
+ *
+ * @api
+ *
+ * @param string $username 
+ * @return void
+ *
+ * 
+*/
 
   static function deleteUser($username){
 
     //delete user from the server
     exec("sudo /opt/ejabberd-13.12/bin/ejabberdctl unregister $username localhost.localdomain", $users);
   }
+  
+/**
+ * connectedUsers
+ *
+ * Returns the sessions of all connected users
+ *
+ * @api
+ *
+ * @param string $username 
+ * @return array $sessions
+ *
+ * 
+*/
 
   static function connectedUsers(){
   
