@@ -49,12 +49,19 @@ class ejabber {
      exec("sudo /opt/ejabberd-13.12/bin/ejabberdctl registered-users localhost.localdomain", $users);
      return $users;
 
-}
+  }
 
   static function deleteUser($username){
 
     //delete user from the server
     exec("sudo /opt/ejabberd-13.12/bin/ejabberdctl unregister $username localhost.localdomain", $users);
-}
+  }
 
+  static function connectedUsers(){
+  
+    exec("sudo /opt/ejabberd-13.12/bin/ejabberdctl connected-users", $sessions);
+    
+    return $sessions;
+  
+  }
 }

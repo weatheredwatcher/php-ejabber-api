@@ -7,7 +7,8 @@ require('ejabberd.php');
 $client = new ejabber\ejabber;
 
 echo $client::createUser('bill', 'password');
+print_r($client::getUsers());
 echo $client::deleteUser('bill');
 
 print_r($client::getUsers());
-
+print_r($client::connectedUsers());
